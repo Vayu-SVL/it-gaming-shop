@@ -49,12 +49,7 @@ body {
     background: white;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    overflow: visible;
-}
-
-header {
-    border-radius: 20px 20px 0 0;
-    overflow: visible;
+    overflow: hidden;
 }
 
 /* ========== Header ========== */
@@ -85,25 +80,19 @@ header {
 .lang-dropdown {
     position: relative;
     display: inline-block;
-    z-index: 9999;
 }
 
 .lang-menu {
     display: none;
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     right: 0;
     background: white;
-    min-width: 140px;
+    min-width: 120px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     border-radius: 8px;
-    z-index: 9999;
-    margin-top: 0;
-    overflow: hidden;
-}
-
-.lang-menu.show {
-    display: block;
+    z-index: 100;
+    margin-top: 8px;
 }
 
 .lang-menu.show {
