@@ -979,6 +979,7 @@ function initLanguageSwitch() {
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             const newLang = link.dataset.lang;
             if (newLang === currentLang) {
                 menu.classList.remove('show');
