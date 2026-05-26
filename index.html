@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"> <!-- viewport ຄວບຄຸມການສະແດງຜົນບົນມືຖື, user-scalable=yes ອະນຸຍາດໃຫ້ຊູມໄດ້ -->
+    <title>IT Gaming Shop - ຮ້ານຂາຍອຸປະກອນເກມມິ່ງ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="promo-wrapper">
+        <div class="promo-text">
+            ສະບາຍດີ🙏 ຍິນດີຕອນຮັບເຂົ້າສູເວັບໄຊຂອງພວກເຮົາ ☺️  📢 ຂ່າວດີ : ປ້ອນລະຫັດນີ້ 📌(LAO2024) ຮັບສ່ວນຫຼຸດລາຄາພິເສດ 5% ທັນທີ່ 🎊 ເອົາລະຫັດນີ້ໄປໃສ່ກັນເລີຍ 🎉 ຂໍໃຫ້ລູກຄ້າມີຄວາມສຸກກັບການເລືອກຊື້ສິນຄ້າ 🥳 
+        </div>
+    </div>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <h1>IT Gaming Shop</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="action-icon" id="langSwitchBtn"> <!--ເປີດ/ປິດ Dropdown ເມນູເລືອກພາສາ (ລາວ/ອັງກິດ)-->
+                        <i class="fas fa-language"></i>
+                        <span id="langText">ພາສາ</span>
+                    </div>
+                    <div class="action-icon" id="cartIconBtn"> <!--ເປີດ Modal ກະຕ່າສິນຄ້າ ແລະ ສະແດງຈຳນວນສິນຄ້າ-->
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>ກະຕ່າ</span>
+                        <span id="cartCountBadge" class="cart-badge">0</span>
+                    </div>
+                    <div class="action-icon" id="userIconBtn"> <!--ເປີດ Modal ສຳລັບປ້ອນ/ແກ້ໄຂຂໍ້ມູນລູກຄ້າ-->
+                        <i class="fas fa-user-circle"></i>
+                        <span>ຂໍ້ມູນ</span>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top:8px;opacity:0.9">ຮ້ານຂາຍອຸປະກອນເກມມິ່ງຄຸນນະພາບສູງ</p>
+        </header>
+
+        <div class="search-filter-section"> <!--ການຄົ້ນຫາ ແລະ ກັ່ນຕອງ-->
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="ຄົ້ນຫາສິນຄ້າ..."> <!-- ຄົ້ນຫາສິນຄ້າຕາມຊື່ (ຮອງຮັບທັງລາວ ແລະ ອັງກິດ)-->
+            </div>
+            <div class="category-filter"> <!--ກັ່ນຕອງສິນຄ້າຕາມໝວດໝູ່: ເມົ້າ, ຄີບອດ, ຫູຟັງ, PC, ໂນດບຸກ-->
+                <button class="filter-btn active" data-category="all">ທັງໝົດ</button>
+                <button class="filter-btn" data-category="mouse">ເມົ້າ</button>
+                <button class="filter-btn" data-category="keyboard">ຄີບອດ</button>
+                <button class="filter-btn" data-category="headphone">ຫູຟັງ</button>
+                <button class="filter-btn" data-category="pc">PC</button>
+                <button class="filter-btn" data-category="notebook">ໂນດບຸກ</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="products-section">
+                <h2>ສິນຄ້າທັງໝົດ</h2>
+                <div class="products-grid" id="productsGrid"></div> <!--ຖືກຄວບຄຸມໂດຍ JavaScript ເພື່ອສ້າງບັດສິນຄ້າແບບ Dynamic-->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal ກະຕ່າ -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shopping-cart"></i> ກະຕ່າສິນຄ້າ</h2>
+                <span class="close-modal" id="closeCartModal">&times;</span>
+            </div>
+            <div class="modal-body" id="cartModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Modal ຂໍ້ມູນລູກຄ້າ -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user"></i> ຂໍ້ມູນລູກຄ້າ</h2>
+                <span class="close-modal" id="closeUserModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="text"  id="customerName"     placeholder="ຊື່ລູກຄ້າ *">
+                <input type="tel"   id="customerPhone"    placeholder="ເບີໂທ *">
+                <input type="email" id="customerEmail"    placeholder="ອີເມວ">
+                <input type="text"  id="customerVillage"  placeholder="ບ້ານ *">
+                <input type="text"  id="customerDistrict" placeholder="ເມືອງ *">
+                <input type="text"  id="customerProvince" placeholder="ແຂວງ *">
+                <button id="saveCustomerBtn" class="btn-save">💾 ບັນທຶກຂໍ້ມູນ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal ລາຍລະອຽດສິນຄ້າ -->
+    <div id="productDetailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalProductTitle"><i class="fas fa-info-circle"></i> ລາຍລະອຽດສິນຄ້າ</h2>
+                <span class="close-modal close-detail">&times;</span>
+            </div>
+            <div id="productDetailBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="toastMsg" class="toast-msg"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

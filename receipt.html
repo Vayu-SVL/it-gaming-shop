@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ໃບບິນຮັບເງິນ - IT Gaming Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding: 20px; }
+        .receipt-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .receipt-header {
+            background: linear-gradient(135deg, #1f1f1f 0%, #3d3b3e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .receipt-header i { font-size: 3rem; }
+        .receipt-header h1 { margin: 10px 0 5px; font-size: 1.6rem; }
+        .receipt-body { padding: 30px; }
+        .info-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.95rem;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .items-table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        .items-table th {
+            background: #2d2d2d;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        .items-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .total-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #2d2d2d;
+        }
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        .grand-total {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #e74c3c;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-group {
+            display: flex;
+            gap: 15px;
+            padding: 0 30px 30px 30px;
+        }
+        .btn-print, .btn-back {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Noto Sans Lao', sans-serif;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+        .btn-print:hover, .btn-back:hover { opacity: 0.85; }
+        .btn-print { background: #27ae60; color: white; }
+        .btn-back  { background: #667eea; color: white; }
+        .payment-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #27ae60;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .loading-box {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+        }
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+            html, body {
+                padding: 0 !important;
+                margin: 0 !important;
+                background: white !important;
+            }
+            .button-group {
+                display: none !important;
+            }
+            .btn-print, .btn-back {
+                display: none !important;
+            }
+            .receipt-container {
+                box-shadow: none !important;
+                margin: 0 auto !important;
+                border-radius: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+            .receipt-header {
+                padding: 15px !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .receipt-header i { font-size: 2rem !important; }
+            .receipt-header h1 { font-size: 1.2rem !important; }
+            .receipt-body {
+                padding: 15px !important;
+            }
+            .info-section {
+                padding: 10px !important;
+                margin-bottom: 10px !important;
+            }
+            .info-row {
+                padding: 4px 0 !important;
+                font-size: 0.82rem !important;
+            }
+            .items-table th,
+            .items-table td {
+                padding: 6px !important;
+                font-size: 0.82rem !important;
+            }
+            .items-table th {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .total-section {
+                margin-top: 10px !important;
+                padding-top: 10px !important;
+            }
+            .total-line {
+                padding: 4px 0 !important;
+                font-size: 0.88rem !important;
+            }
+            .grand-total {
+                font-size: 1rem !important;
+                margin-top: 8px !important;
+                padding-top: 8px !important;
+            }
+        }
+
+        /* ສຳລັບມືຖື */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .receipt-container {
+                margin: 0;
+            }
+            .receipt-body {
+                padding: 20px;
+            }
+            .button-group {
+                flex-direction: column;
+                padding: 0 20px 20px;
+            }
+            .grand-total {
+                font-size: 1.1rem;
+            }
+            .info-section {
+                padding: 15px;
+            }
+            .items-table th,
+            .items-table td {
+                padding: 8px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt-container">
+        <div class="receipt-header">
+            <i class="fas fa-gamepad"></i>
+            <h1>🧾 ໃບບິນຮັບເງິນ</h1>
+            <p>IT Gaming Shop — ຂອບໃຈທີ່ໃຊ້ບໍລິການ</p>
+        </div>
+        <div class="receipt-body" id="receiptBody">
+            <div class="loading-box">
+                <i class="fas fa-spinner fa-spin fa-2x"></i>
+                <p style="margin-top:12px">ກຳລັງໂຫຼດ...</p>
+            </div>
+        </div>
+        <div class="button-group">
+            <button class="btn-print" onclick="window.print()">
+                <i class="fas fa-print"></i> ພິມໃບບິນ
+            </button>
+            <button class="btn-back" onclick="window.location.href='index.html'">
+                <i class="fas fa-home"></i> ກັບໄປໜ້າຮ້ານ
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function formatMoney(amount) {
+            return amount.toLocaleString('lo-LA');
+        }
+
+        function loadReceipt() {
+            const raw = localStorage.getItem('currentOrder');
+            if (!raw) {
+                document.getElementById('receiptBody').innerHTML = `
+                    <div style="text-align:center;padding:60px">
+                        <i class="fas fa-exclamation-circle fa-3x" style="color:#e74c3c"></i>
+                        <h3 style="margin:16px 0 8px">❌ ບໍ່ພົບຂໍ້ມູນການສັ່ງຊື້</h3>
+                        <p style="color:#666;margin-bottom:20px">ກະລຸນາສັ່ງຊື້ຈາກໜ້າຫຼັກກ່ອນ</p>
+                        <button onclick="location.href='index.html'" 
+                                style="background:#667eea;color:white;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-family:'Noto Sans Lao',sans-serif;font-size:1rem">
+                            ກັບໄປໜ້າຮ້ານ
+                        </button>
+                    </div>`;
+                return;
+            }
+
+            const o = JSON.parse(raw);
+
+            const itemRows = o.cart.map(i => `
+                <tr>
+                    <td>${i.emoji} ${i.name}</td>
+                    <td style="text-align:center">${i.quantity}</td>
+                    <td style="text-align:right">${formatMoney(i.price)}</td>
+                    <td style="text-align:right">${formatMoney(i.price * i.quantity)}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('receiptBody').innerHTML = `
+                <div class="info-section">
+                    <div class="info-row"><span>📅 ວັນທີ:</span><span>${o.orderDate}</span></div>
+                    <div class="info-row"><span>👤 ຊື່:</span><span>${o.customerName}</span></div>
+                    <div class="info-row"><span>📞 ເບີໂທ:</span><span>${o.customerPhone}</span></div>
+                    <div class="info-row"><span>🏠 ທີ່ຢູ່:</span><span>${o.address}</span></div>
+                    <div class="info-row"><span>🚚 ຂົນສົ່ງ:</span><span>${o.shippingMethod}</span></div>
+                    <div class="info-row">
+                        <span>💳 ຊຳລະ:</span>
+                        <span><span class="payment-badge">${o.paymentMethod}</span></span>
+                    </div>
+                </div>
+
+                <table class="items-table">
+                    <thead>
+                        <tr>
+                            <th>ສິນຄ້າ</th>
+                            <th style="text-align:center">ຈຳນວນ</th>
+                            <th style="text-align:right">ລາຄາ/ອັນ</th>
+                            <th style="text-align:right">ລວມ</th>
+                        </tr>
+                    </thead>
+                    <tbody>${itemRows}</tbody>
+                </table>
+
+                <div class="total-section">
+                    <div class="total-line">
+                        <span>ຍອດສິນຄ້າ:</span>
+                        <span>${formatMoney(o.subtotal)} ກີບ</span>
+                    </div>
+                    <div class="total-line">
+                        <span>ຄ່າຂົນສົ່ງ:</span>
+                        <span>${formatMoney(o.shippingCost)} ກີບ</span>
+                    </div>
+                    ${o.discountApplied ? `
+                    <div class="total-line" style="color:#27ae60">
+                        <span>ສ່ວນຫຼຸດ 5%:</span>
+                        <span>-${formatMoney(o.discountAmount)} ກີບ</span>
+                    </div>` : ''}
+                    <div class="grand-total">
+                        <span>ຍອດສຸດທ້າຍ:</span>
+                        <span>${formatMoney(o.grandTotal)} ກີບ</span>
+                    </div>
+                </div>
+
+                <p style="text-align:center;margin-top:30px;color:#666;font-size:1.1rem">
+                    ຂອບໃຈທີ່ໃຊ້ບໍລິການ 🙏
+                </p>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadReceipt);
+    </script>
+</body>
+</html>
