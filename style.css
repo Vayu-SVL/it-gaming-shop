@@ -312,20 +312,23 @@ header {
     backdrop-filter: blur(3px);
 }
 
+/* Bottom sheet style for mobile */
 .modal-content {
     background: white;
-    margin: 5% auto;
-    width: 90%;
-    max-width: 550px;
-    border-radius: 16px;
-    max-height: 85vh;
-    overflow: auto;
-    animation: slideDown 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 20px 20px 0 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    overscroll-behavior: contain;
 }
 
-@keyframes slideDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to   { transform: translateY(0);     opacity: 1; }
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0.8; }
+    to   { transform: translateY(0);    opacity: 1; }
 }
 
 .modal-header {
