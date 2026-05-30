@@ -351,7 +351,6 @@ const COUPON_CODE = 'LAO2024';
 const DISCOUNT_RATE = 0.05;
 
 // ========== LANGUAGE SWITCH - ຟັງຊັ້ນປ່ຽນພາສາ ==========
-// ສ່ວນນີ້ເພີ່ມໃໝ່: ການຈັດການປ່ຽນພາສາລະຫວ່າງ ລາວ ແລະ ອັງກິດ
 let currentLang = 'lo'; // ພາສາເລີ່ມຕົ້ນ: ລາວ (lo) ຫຼື ອັງກິດ (en)
 
 // ຂໍ້ມູນສຳລັບແປພາສາ (key: ຂໍ້ຄວາມຕົ້ນສະບັບພາສາລາວ, value: ວັດຖຸທີ່ມີທັງສອງພາສາ)
@@ -435,6 +434,7 @@ const translations = {
  * @param {string} key - ຂໍ້ຄວາມຕົ້ນສະບັບພາສາລາວ
  * @returns {string} ຂໍ້ຄວາມທີ່ແປແລ້ວຕາມພາສາປັດຈຸບັນ
  */
+
 function t(key) {
     return translations[key]?.[currentLang] || key;
 }
@@ -1033,6 +1033,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cartIconBtn').addEventListener('click', () => {
         renderCartModal();
         document.getElementById('cartModal').style.display = 'block';
+    });
+
+    // Contact modal - ເປີດ
+    document.getElementById('contactIconBtn').addEventListener('click', () => {
+        document.getElementById('contactModal').style.display = 'block';
     });
 
     // User/customer modal - ເປີດ (pre-fill ຂໍ້ມູນເດີມ)

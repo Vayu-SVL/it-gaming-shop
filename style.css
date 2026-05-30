@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Noto Sans Lao', sans-serif;
-    background: linear-gradient(135deg, #f3f1f1 0%, #363536 100%);
+    background: linear-gradient(#4e4d4e 100%);
     min-height: 100vh;
     padding: 0px;
 }
@@ -54,7 +54,7 @@ body {
 
 /* ========== Header ========== */
 header {
-    background: linear-gradient(135deg, #1f1f1f 0%, #3d3b3e 100%);
+    background: linear-gradient(135deg, #1f1f1f 100%);
     color: white;
     padding: 25px 30px;
 }
@@ -761,4 +761,172 @@ header p {
     .product-image { height: 110px; }
     .product-name  { font-size: 0.85rem; }
     .product-price { font-size: 1rem; }
+}
+
+/* ========== Contact Modal ========== */
+.contact-intro {
+    background: #f0f7ff;
+    border-left: 4px solid #127cdf;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f8f9fa;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.2s;
+}
+
+.contact-item:hover {
+    border-color: #127cdf;
+    background: #f0f7ff;
+    transform: translateX(4px);
+}
+
+.contact-icon-wrap {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #1f1f1f, #3d3b3e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon-wrap i {
+    color: white;
+    font-size: 1rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.contact-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.contact-arrow {
+    color: #bbb;
+    font-size: 0.85rem;
+}
+
+.contact-social-row {
+    display: flex;
+    gap: 12px;
+}
+
+.contact-social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: opacity 0.2s;
+    color: white;
+}
+
+.contact-social-btn.facebook  { background: #1877f2; }
+.contact-social-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.contact-social-btn.tiktok    { background: #010101; }
+.contact-social-btn.whatsapp  { background: #25d366; }
+.contact-social-btn:hover     { opacity: 0.85; }
+
+/* ========== Footer ========== */
+.site-footer {
+    background: linear-gradient(#4e4d4e 100%);
+    color: white;
+    padding: 30px 20px;
+    margin-top: 0;
+}
+
+.footer-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-tagline {
+    font-size: 1rem;
+    opacity: 0.85;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    transition: transform 0.2s, opacity 0.2s;
+    white-space: nowrap;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.social-btn i { font-size: 1.1rem; }
+
+.social-btn.facebook  { background: #1877f2; }
+.social-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-btn.tiktok    { background: #010101; }
+.social-btn.whatsapp  { background: #25d366; }
+
+.footer-copy {
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+@media (max-width: 480px) {
+    .contact-social-row { flex-direction: column; }
+    .footer-socials      { flex-wrap: wrap; gap: 8px; }
+    .social-btn          { padding: 8px 12px; font-size: 0.8rem; }
 }
