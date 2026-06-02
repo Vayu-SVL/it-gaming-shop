@@ -159,6 +159,24 @@
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
+
+                <!-- ຟອມລາຍງານບັນຫາ -->
+                <div class="report-section">
+                    <div class="report-divider"><span>📝 ລາຍງານບັນຫາ</span></div>
+                    <textarea id="reportText" class="report-textarea" placeholder="ອະທິບາຍບັນຫາທີ່ພົບ... ຕົວຢ່າງ: ສິນຄ້າຜິດ, ຊຳລະເງິນບໍ່ໄດ້, ລາຄາບໍ່ຖືກ ແລະ ອື່ນໆ"></textarea>
+                    <div class="report-image-upload" id="reportImageArea">
+                        <input type="file" id="reportImageInput" accept="image/*" multiple style="display:none">
+                        <div class="upload-placeholder" id="uploadPlaceholder" onclick="document.getElementById('reportImageInput').click()">
+                            <i class="fas fa-camera"></i>
+                            <p>ກົດເພື່ອອັບໂຫຼດຮູບພາບ</p>
+                            <span>ຮອງຮັບ JPG, PNG (ສູງສຸດ 5 ຮູບ)</span>
+                        </div>
+                        <div class="preview-grid" id="imagePreviewGrid"></div>
+                    </div>
+                    <button class="btn-report-submit" id="reportSubmitBtn">
+                        <i class="fas fa-paper-plane"></i> ຍືນຍັນລາຍງານບັນຫາ
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -185,7 +203,7 @@
                     <span>IT Gaming Shop</span>
                 </a>
             </div>
-            <p class="footer-copy">© 2026 IT Gaming Shop. All rights reserved.</p>
+            <p class="footer-copy">© 2024 IT Gaming Shop. All rights reserved.</p>
         </div>
     </footer>
 

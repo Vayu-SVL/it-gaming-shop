@@ -351,6 +351,7 @@ const COUPON_CODE = 'LAO2024';
 const DISCOUNT_RATE = 0.05;
 
 // ========== LANGUAGE SWITCH - ຟັງຊັ້ນປ່ຽນພາສາ ==========
+// ສ່ວນນີ້ເພີ່ມໃໝ່: ການຈັດການປ່ຽນພາສາລະຫວ່າງ ລາວ ແລະ ອັງກິດ
 let currentLang = 'lo'; // ພາສາເລີ່ມຕົ້ນ: ລາວ (lo) ຫຼື ອັງກິດ (en)
 
 // ຂໍ້ມູນສຳລັບແປພາສາ (key: ຂໍ້ຄວາມຕົ້ນສະບັບພາສາລາວ, value: ວັດຖຸທີ່ມີທັງສອງພາສາ)
@@ -434,7 +435,6 @@ const translations = {
  * @param {string} key - ຂໍ້ຄວາມຕົ້ນສະບັບພາສາລາວ
  * @returns {string} ຂໍ້ຄວາມທີ່ແປແລ້ວຕາມພາສາປັດຈຸບັນ
  */
-
 function t(key) {
     return translations[key]?.[currentLang] || key;
 }
@@ -1038,6 +1038,68 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contact modal - ເປີດ
     document.getElementById('contactIconBtn').addEventListener('click', () => {
         document.getElementById('contactModal').style.display = 'block';
+    });
+
+    // ລາຍງານບັນຫາ - ຈັດການຮູບພາບ preview
+    let reportImages = [];
+
+    document.getElementById('reportImageInput').addEventListener('change', function () {
+        const files = Array.from(this.files);
+        const remaining = 5 - reportImages.length;
+        const toAdd = files.slice(0, remaining);
+
+        toAdd.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                reportImages.push({ name: file.name, data: e.target.result });
+                renderImagePreviews();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        if (files.length > remaining) {
+            showToast('⚠️ ອັບໂຫຼດໄດ້ສູງສຸດ 5 ຮູບເທົ່ານັ້ນ');
+        }
+        this.value = '';
+    });
+
+    function renderImagePreviews() {
+        const grid = document.getElementById('imagePreviewGrid');
+        const placeholder = document.getElementById('uploadPlaceholder');
+
+        grid.innerHTML = reportImages.map((img, i) => `
+            <div class="preview-item">
+                <img src="${img.data}" alt="preview">
+                <button class="preview-remove" onclick="removeReportImage(${i})">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `).join('');
+
+        // ຖ້າຄົບ 5 ຮູບ ຊ່ອນປຸ່ມອັບໂຫຼດ
+        placeholder.style.display = reportImages.length >= 5 ? 'none' : 'block';
+    }
+
+    window.removeReportImage = function(index) {
+        reportImages.splice(index, 1);
+        renderImagePreviews();
+    };
+
+    // ປຸ່ມຍືນຍັນລາຍງານ
+    document.getElementById('reportSubmitBtn').addEventListener('click', () => {
+        const text = document.getElementById('reportText').value.trim();
+        if (!text) {
+            showToast('⚠️ ກະລຸນາໃສ່ລາຍລະອຽດບັນຫາກ່ອນ');
+            document.getElementById('reportText').focus();
+            return;
+        }
+
+        // ສຳເລັດ — Reset ຟອມ
+        document.getElementById('reportText').value = '';
+        reportImages = [];
+        renderImagePreviews();
+        document.getElementById('contactModal').style.display = 'none';
+        showToast('✅ ລາຍງານບັນຫາສຳເລັດ! ພວກເຮົາຈະຕິດຕໍ່ກັບໄປໄວໆ 🙏');
     });
 
     // User/customer modal - ເປີດ (pre-fill ຂໍ້ມູນເດີມ)
