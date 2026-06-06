@@ -1062,3 +1062,128 @@ header p {
     .footer-socials      { flex-wrap: wrap; gap: 8px; }
     .social-btn          { padding: 8px 12px; font-size: 0.8rem; }
 }
+/* ===== Classes extracted from inline styles ===== */
+
+/* index.html - header subtitle */
+.header-subtitle {
+    margin-top: 8px;
+    opacity: 0.9;
+    align-self: flex-start;
+}
+
+/* index.html - hidden file input */
+.hidden-input {
+    display: none;
+}
+
+/* script.js - cart empty state */
+.cart-empty {
+    text-align: center;
+    padding: 40px;
+}
+
+/* script.js - cart section sub-headings (shipping, payment) */
+.cart-section-title {
+    margin: 15px 0 10px;
+}
+
+/* script.js - QR payment section */
+.qr-pay-section {
+    text-align: center;
+    margin: 15px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 14px;
+    border: 2px solid #e0e0e0;
+}
+
+.qr-pay-title {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.qr-image {
+    max-width: 240px;
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    display: block;
+    margin: 0 auto;
+}
+
+.qr-caption {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* script.js - Card payment section */
+.card-pay-section {
+    margin: 15px 0;
+    padding: 20px;
+    background: #f0f4ff;
+    border-radius: 14px;
+    border: 2px solid #c5d0f5;
+}
+
+.card-pay-title {
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #333;
+}
+
+.card-input {
+    padding: 12px;
+    border: 2px solid #c5d0f5;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Noto Sans Lao', sans-serif;
+}
+
+.card-number-input {
+    width: 100%;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.card-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.card-name-input {
+    width: 100%;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.card-security-note {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* script.js - Coupon message */
+.coupon-msg {
+    margin-top: 8px;
+    font-size: 0.8rem;
+}
+
+.coupon-msg.discount-active {
+    color: #27ae60;
+}
+
+/* script.js - Discount summary row */
+.summary-row--discount {
+    color: #27ae60;
+}
+
+/* script.js - No search results */
+.no-results {
+    text-align: center;
+    padding: 60px;
+    color: #999;
+    grid-column: 1 / -1;
+}
