@@ -798,7 +798,7 @@ function renderCartModal() {
             <div class="coupon-section">
                 <h3><i class="fas fa-tag"></i> ${t('ລະຫັດສ່ວນຫຼຸດ')}</h3>
                 <div class="coupon-input-group">
-                    <input type="text" id="couponInput" placeholder="${t('ປ້ອນລະຫັດ (LAO2024)')}" 
+                    <input type="text" id="couponInput" placeholder="${t('ປ້ອນລະຫັດ')}" 
                            value="${discountApplied ? COUPON_CODE : ''}">
                     <button id="applyCouponBtn" class="btn-coupon" ${discountApplied ? 'disabled' : ''}>
                         ${discountApplied ? `✅ ${t('ໃຊ້ແລ້ວ')}` : t('ໃຊ້ລະຫັດ')}
