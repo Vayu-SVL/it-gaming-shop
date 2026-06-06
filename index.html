@@ -2,7 +2,7 @@
 <html lang="lo">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"> <!-- viewport ຄວບຄຸມການສະແດງຜົນບົນມືຖື, user-scalable=yes ອະນຸຍາດໃຫ້ຊູມໄດ້ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"> 
     <title>IT Gaming Shop - ຮ້ານຂາຍອຸປະກອນເກມມິ່ງ</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,20 +22,20 @@
                 </div>
                 <p style="margin-top:8px;opacity:0.9">ຮ້ານຂາຍອຸປະກອນເກມມິ່ງຄຸນນະພາບສູງ</p>
                 <div class="header-actions">
-                    <div class="action-icon" id="langSwitchBtn"> <!--ເປີດ/ປິດ Dropdown ເມນູເລືອກພາສາ (ລາວ/ອັງກິດ)-->
+                    <div class="action-icon" id="langSwitchBtn"> 
                         <i class="fas fa-language"></i>
                         <span id="langText">ພາສາ</span>
                     </div>
-                    <div class="action-icon" id="cartIconBtn"> <!--ເປີດ Modal ກະຕ່າສິນຄ້າ ແລະ ສະແດງຈຳນວນສິນຄ້າ-->
+                    <div class="action-icon" id="cartIconBtn"> 
                         <i class="fas fa-shopping-cart"></i>
                         <span>ກະຕ່າ</span>
                         <span id="cartCountBadge" class="cart-badge">0</span>
                     </div>
-                    <div class="action-icon" id="userIconBtn"> <!--ເປີດ Modal ສຳລັບປ້ອນ/ແກ້ໄຂຂໍ້ມູນລູກຄ້າ-->
+                    <div class="action-icon" id="userIconBtn"> 
                         <i class="fas fa-user-circle"></i>
                         <span>ຂໍ້ມູນ</span>
                     </div>
-                    <div class="action-icon" id="contactIconBtn"> <!--ເປີດ Modal ຕິດຕໍ່ ແລະ ລາຍງານບັນຫາ-->
+                    <div class="action-icon" id="contactIconBtn"> 
                         <i class="fas fa-headset"></i>
                         <span>ຕິດຕໍ່</span>
                     </div>
@@ -44,12 +44,12 @@
             
         </header>
 
-        <div class="search-filter-section"> <!--ການຄົ້ນຫາ ແລະ ກັ່ນຕອງ-->
+        <div class="search-filter-section"> 
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="ຄົ້ນຫາສິນຄ້າ..."> <!-- ຄົ້ນຫາສິນຄ້າຕາມຊື່ (ຮອງຮັບທັງລາວ ແລະ ອັງກິດ)-->
+                <input type="text" id="searchInput" placeholder="ຄົ້ນຫາສິນຄ້າ..."> 
             </div>
-            <div class="category-filter"> <!--ກັ່ນຕອງສິນຄ້າຕາມໝວດໝູ່: ເມົ້າ, ຄີບອດ, ຫູຟັງ, PC, ໂນດບຸກ-->
+            <div class="category-filter"> 
                 <button class="filter-btn active" data-category="all">ທັງໝົດ</button>
                 <button class="filter-btn" data-category="mouse">ເມົ້າ</button>
                 <button class="filter-btn" data-category="keyboard">ຄີບອດ</button>
@@ -62,12 +62,11 @@
         <div class="main-content">
             <div class="products-section">
                 <h2>ສິນຄ້າທັງໝົດ</h2>
-                <div class="products-grid" id="productsGrid"></div> <!--ຖືກຄວບຄຸມໂດຍ JavaScript ເພື່ອສ້າງບັດສິນຄ້າແບບ Dynamic-->
+                <div class="products-grid" id="productsGrid"></div> 
             </div>
         </div>
     </div>
 
-    <!-- Modal ກະຕ່າ -->
     <div id="cartModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -78,7 +77,6 @@
         </div>
     </div>
 
-    <!-- Modal ຂໍ້ມູນລູກຄ້າ -->
     <div id="userModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -97,7 +95,6 @@
         </div>
     </div>
 
-    <!-- Modal ລາຍລະອຽດສິນຄ້າ -->
     <div id="productDetailModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -108,7 +105,6 @@
         </div>
     </div>
 
-    <!-- Modal ຕິດຕໍ່ ແລະ ລາຍງານບັນຫາ -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -160,7 +156,6 @@
                     </a>
                 </div>
 
-                <!-- ຟອມລາຍງານບັນຫາ -->
                 <div class="report-section">
                     <div class="report-divider"><span>📝 ລາຍງານບັນຫາ</span></div>
                     <textarea id="reportText" class="report-textarea" placeholder="ອະທິບາຍບັນຫາທີ່ພົບ... ຕົວຢ່າງ: ສິນຄ້າຜິດ, ຊຳລະເງິນບໍ່ໄດ້, ລາຄາບໍ່ຖືກ ແລະ ອື່ນໆ"></textarea>
@@ -181,7 +176,6 @@
         </div>
     </div>
 
-    <!-- Footer Social Media -->
     <footer class="site-footer">
         <div class="footer-inner">
             <p class="footer-tagline">🎮 IT Gaming Shop — ຕິດຕາມຂ່າວສານ ແລະ ໂປຣໂມຊັ່ນໃໝ່ໆຂອງພວກເຮົາ</p>

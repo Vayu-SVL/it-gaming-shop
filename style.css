@@ -52,7 +52,6 @@ body {
     overflow: hidden;
 }
 
-/* ========== Header ========== */
 header {
     background: linear-gradient(135deg, #1f1f1f 100%);
     color: white;
@@ -75,12 +74,11 @@ header {
 
 header > .header-top + p,
 header p {
-    align-self: flex-start;  /* ດັນຂໍ້ຄວາມໄປຊ້າຍຄືກັນກັບ logo */
+    align-self: flex-start;  
 }
 .logo i { font-size: 2.2rem; }
 .logo h1 { font-size: 1.6rem; }
 
-/* ========== Language Switch ========== */
 .lang-dropdown {
     position: relative;
     display: inline-block;
@@ -147,7 +145,6 @@ header p {
     font-weight: bold;
 }
 
-/* ========== Search & Filter ========== */
 .search-filter-section {
     padding: 20px 30px;
     background: #f8f9fa;
@@ -204,7 +201,6 @@ header p {
     border-color: #2d2d2d;
 }
 
-/* ========== Products ========== */
 .main-content {
     padding: 30px;
 }
@@ -303,7 +299,6 @@ header p {
 
 .btn-detail:hover { background: #2d2d2d; }
 
-/* ========== Modal ========== */
 .modal {
     display: none;
     position: fixed;
@@ -392,7 +387,6 @@ header p {
 
 .btn-save:hover { background: #219a52; }
 
-/* ========== Cart Modal ========== */
 .cart-items-list {
     max-height: 300px;
     overflow-y: auto;
@@ -573,7 +567,6 @@ header p {
 
 .btn-checkout-final:hover { background: #219a52; }
 
-/* ========== Toast ========== */
 .toast-msg {
     position: fixed;
     bottom: 30px;
@@ -590,7 +583,6 @@ header p {
     white-space: nowrap;
 }
 
-/* ========== Product Detail Modal ========== */
 #productDetailModal .modal-content {
     max-width: 500px;
     border-radius: 20px;
@@ -613,7 +605,6 @@ header p {
 #productDetailModal .modal-body::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
 #productDetailModal .modal-body::-webkit-scrollbar-thumb { background: #323333; border-radius: 10px; }
 
-/* Detail body layout (ຍ້າຍອອກຈາກ inline style) */
 .detail-body-inner {
     text-align: center;
     padding: 10px;
@@ -712,7 +703,6 @@ header p {
 
 .btn-detail-add-cart:hover { opacity: 0.9; }
 
-/* ========== Responsive ========== */
 @media (max-width: 768px) {
     body { padding: 10px; }
 
@@ -763,7 +753,6 @@ header p {
     .product-price { font-size: 1rem; }
 }
 
-/* ========== Contact Modal ========== */
 .contact-intro {
     background: #f0f7ff;
     border-left: 4px solid #127cdf;
@@ -865,7 +854,6 @@ header p {
 .contact-social-btn.whatsapp  { background: #25d366; }
 .contact-social-btn:hover     { opacity: 0.85; }
 
-/* ========== Report Form ========== */
 .report-section {
     margin-top: 20px;
 }
@@ -1010,7 +998,6 @@ header p {
 .btn-report-submit:hover  { opacity: 0.88; }
 .btn-report-submit:active { transform: scale(0.98); }
 
-/* ========== Footer ========== */
 .site-footer {
     background: linear-gradient(#454545 100%);
     color: white;

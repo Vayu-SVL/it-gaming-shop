@@ -1,7 +1,4 @@
-// ========== Product Data ==========
-// ຂໍ້ມູນສິນຄ້າທັງໝົດ ປະກອບມີທັງພາສາລາວ ແລະ ອັງກິດ
 const products = [
-    // ========== ໝວດໝູ່: ເມົ້າເກມມິ້ງ (Gaming Mice) ==========
     { 
         id: 1, 
         name: { lo: "Logitech G Pro X Superlight 2", en: "Logitech G Pro X Superlight 2" }, 
@@ -68,7 +65,6 @@ const products = [
         } 
     },
 
-    // ========== ໝວດໝູ່: ຄີບອດເກມມິ້ງ (Gaming Keyboards) ==========
     { 
         id: 6, 
         name: { lo: "SteelSeries Apex Pro TKL (2023)", en: "SteelSeries Apex Pro TKL (2023)" }, 
@@ -135,7 +131,6 @@ const products = [
         } 
     },
 
-    // ========== ໝວດໝູ່: ຫູຟັງເກມມິ້ງ (Gaming Headsets) ==========
     { 
         id: 11, 
         name: { lo: "Razer BlackShark V2 Pro (2023)", en: "Razer BlackShark V2 Pro (2023)" }, 
@@ -202,7 +197,6 @@ const products = [
         } 
     },
 
-    // ========== ໝວດໝູ່: ເຄື່ອງຄອມພີວເຕີ້ຕັ້ງໂຕະ (Gaming PC Desktops) ==========
     { 
         id: 16, 
         name: { lo: "ASUS ROG Strix G35CA", en: "ASUS ROG Strix G35CA" }, 
@@ -269,7 +263,6 @@ const products = [
         } 
     },
 
-    // ========== ໝວດໝູ່: ໂນດບຸກເກມມິ້ງ (Gaming Laptops) ==========
     { 
         id: 21, 
         name: { lo: "ASUS ROG Strix SCAR 18 (2024)", en: "ASUS ROG Strix SCAR 18 (2024)" }, 
@@ -337,26 +330,19 @@ const products = [
     }
 ];
 
-// ========== App State ==========
-// ສະຖານະຂອງແອັບພລິເຄຊັນ
-let cart = [];              // ລາຍການສິນຄ້າໃນກະຕ່າ
-let discountApplied = false;  // ສະຖານະການໃຊ້ສ່ວນຫຼຸດ
-let selectedShipping = 'hung-aloun';  // ຮູບແບບການຂົນສົ່ງທີ່ເລືອກ
-let selectedPayment = 'qr';           // ຮູບແບບການຊຳລະທີ່ເລືອກ
+let cart = [];              
+let discountApplied = false;  
+let selectedShipping = 'hung-aloun'; 
+let selectedPayment = 'qr';           
 let customerData = { name: '', phone: '', email: '', village: '', district: '', province: '' };
 
-// ຄ່າຄົງທີ່ຕ່າງໆ
 const shippingCosts = { 'hung-aloun': 20000, 'anousith': 15000, 'mixay': 25000 };
 const COUPON_CODE = 'LAO2024';
 const DISCOUNT_RATE = 0.05;
 
-// ========== LANGUAGE SWITCH - ຟັງຊັ້ນປ່ຽນພາສາ ==========
-// ສ່ວນນີ້ເພີ່ມໃໝ່: ການຈັດການປ່ຽນພາສາລະຫວ່າງ ລາວ ແລະ ອັງກິດ
-let currentLang = 'lo'; // ພາສາເລີ່ມຕົ້ນ: ລາວ (lo) ຫຼື ອັງກິດ (en)
+let currentLang = 'lo'; 
 
-// ຂໍ້ມູນສຳລັບແປພາສາ (key: ຂໍ້ຄວາມຕົ້ນສະບັບພາສາລາວ, value: ວັດຖຸທີ່ມີທັງສອງພາສາ)
 const translations = {
-    // Header
     'ກະຕ່າ': { lo: 'ກະຕ່າ', en: 'Cart' },
     'ຂໍ້ມູນ': { lo: 'ຂໍ້ມູນ', en: 'Profile' },
     'ພາສາ': { lo: 'ພາສາ', en: 'Language' },
@@ -365,8 +351,7 @@ const translations = {
         lo: 'ຮ້ານຂາຍອຸປະກອນເກມມິ່ງຄຸນນະພາບສູງ ສົ່ງຟຣີທົ່ວປະເທດ', 
         en: 'High quality gaming gear shop - Free delivery nationwide' 
     },
-    
-    // Search & Filter
+
     'ຄົ້ນຫາສິນຄ້າ...': { lo: 'ຄົ້ນຫາສິນຄ້າ...', en: 'Search products...' },
     'ທັງໝົດ': { lo: 'ທັງໝົດ', en: 'All' },
     'ເມົ້າ': { lo: 'ເມົ້າ', en: 'Mouse' },
@@ -374,16 +359,14 @@ const translations = {
     'ຫູຟັງ': { lo: 'ຫູຟັງ', en: 'Headphone' },
     'PC': { lo: 'PC', en: 'PC' },
     'ໂນດບຸກ': { lo: 'ໂນດບຸກ', en: 'Laptop' },
-    
-    // Products Section
+
     'ສິນຄ້າທັງໝົດ': { lo: 'ສິນຄ້າທັງໝົດ', en: 'All Products' },
     'ລຸ້ນ': { lo: 'ລຸ້ນ', en: 'Version' },
     'ເພີ່ມໃສ່ກະຕ່າ': { lo: 'ເພີ່ມໃສ່ກະຕ່າ', en: 'Add to Cart' },
     'ເບິ່ງລາຍລະອຽດ': { lo: 'ເບິ່ງລາຍລະອຽດ', en: 'View Details' },
     'ບໍ່ພົບສິນຄ້າທີ່ຄົ້ນຫາ': { lo: 'ບໍ່ພົບສິນຄ້າທີ່ຄົ້ນຫາ', en: 'No products found' },
     'ກີບ': { lo: 'ກີບ', en: 'LAK' },
-    
-    // Cart Modal
+
     'ກະຕ່າສິນຄ້າ': { lo: 'ກະຕ່າສິນຄ້າ', en: 'Shopping Cart' },
     'ລາຍການສິນຄ້າ': { lo: 'ລາຍການສິນຄ້າ', en: 'Cart Items' },
     'ຍັງບໍ່ມີສິນຄ້າ': { lo: 'ຍັງບໍ່ມີສິນຄ້າ', en: 'No items in cart' },
@@ -406,8 +389,7 @@ const translations = {
     'ຊຳລະເງິນ ແລະ ອອກໃບບິນ': { lo: 'ຊຳລະເງິນ ແລະ ອອກໃບບິນ', en: 'Checkout & Print Receipt' },
     'ໄດ້ຮັບສ່ວນຫຼຸດ 5% ແລ້ວ!': { lo: 'ໄດ້ຮັບສ່ວນຫຼຸດ 5% ແລ້ວ!', en: '5% discount applied!' },
     'ລະຫັດສ່ວນຫຼຸດບໍ່ຖືກຕ້ອງ': { lo: 'ລະຫັດສ່ວນຫຼຸດບໍ່ຖືກຕ້ອງ', en: 'Invalid discount code' },
-    
-    // User Modal
+
     'ຂໍ້ມູນລູກຄ້າ': { lo: 'ຂໍ້ມູນລູກຄ້າ', en: 'Customer Information' },
     'ຊື່ລູກຄ້າ *': { lo: 'ຊື່ລູກຄ້າ *', en: 'Customer Name *' },
     'ເບີໂທ *': { lo: 'ເບີໂທ *', en: 'Phone Number *' },
@@ -416,12 +398,10 @@ const translations = {
     'ເມືອງ *': { lo: 'ເມືອງ *', en: 'District *' },
     'ແຂວງ *': { lo: 'ແຂວງ *', en: 'Province *' },
     'ບັນທຶກຂໍ້ມູນ': { lo: '💾 ບັນທຶກຂໍ້ມູນ', en: '💾 Save Information' },
-    
-    // Product Detail Modal
+
     'ລາຍລະອຽດສິນຄ້າ': { lo: 'ລາຍລະອຽດສິນຄ້າ', en: 'Product Details' },
     'ສະເປັກສິນຄ້າ': { lo: 'ສະເປັກສິນຄ້າ', en: 'Specifications' },
-    
-    // Toast Messages
+
     'ເພີ່ມໃສ່ກະຕ່າແລ້ວ': { lo: 'ເພີ່ມໃສ່ກະຕ່າແລ້ວ', en: 'added to cart' },
     'ກະລຸນາເລືອກສິນຄ້າກ່ອນ': { lo: 'ກະລຸນາເລືອກສິນຄ້າກ່ອນ', en: 'Please select items first' },
     'ກະລຸນາປ້ອນຂໍ້ມູນລູກຄ້າ (ກົດໄອຄອນຄົນ)': { lo: 'ກະລຸນາປ້ອນຂໍ້ມູນລູກຄ້າ (ກົດໄອຄອນຄົນ)', en: 'Please enter customer information (click profile icon)' },
@@ -430,28 +410,18 @@ const translations = {
     'ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ': { lo: 'ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບ', en: 'Please fill all required fields' }
 };
 
-/**
- * ຟັງຊັ້ນແປພາສາ - ດຶງຂໍ້ຄວາມຕາມພາສາທີ່ເລືອກ
- * @param {string} key - ຂໍ້ຄວາມຕົ້ນສະບັບພາສາລາວ
- * @returns {string} ຂໍ້ຄວາມທີ່ແປແລ້ວຕາມພາສາປັດຈຸບັນ
- */
 function t(key) {
     return translations[key]?.[currentLang] || key;
 }
 
-/**
- * ຟັງຊັ້ນແປພາສາທຸກອົງປະກອບໃນໜ້າເວັບ
- * ສ່ວນນີ້ເພີ່ມໃໝ່: ໃຊ້ສຳລັບອັບເດດຂໍ້ຄວາມທັງໜ້າເມື່ອປ່ຽນພາສາ
- */
 function translatePage() {
-    // Header
+    
     const logoTitle = document.querySelector('.logo h1');
     if (logoTitle) logoTitle.textContent = t('IT Gaming Shop');
     
     const headerDesc = document.querySelector('header p');
     if (headerDesc) headerDesc.textContent = t('ຮ້ານຂາຍອຸປະກອນເກມມິ່ງຄຸນນະພາບສູງ');
     
-    // Header actions
     const cartSpan = document.querySelector('#cartIconBtn span:not(.cart-badge)');
     if (cartSpan) cartSpan.textContent = t('ກະຕ່າ');
     
@@ -460,31 +430,25 @@ function translatePage() {
     
     const langSpan = document.querySelector('#langText');
     if (langSpan) langSpan.textContent = t('ພາສາ');
-    
-    // Search placeholder
+
     const searchInput = document.getElementById('searchInput');
     if (searchInput) searchInput.placeholder = t('ຄົ້ນຫາສິນຄ້າ...');
-    
-    // Filter buttons
+
     const filterBtns = document.querySelectorAll('.filter-btn');
     const filterTexts = ['ທັງໝົດ', 'ເມົ້າ', 'ຄີບອດ', 'ຫູຟັງ', 'PC', 'ໂນດບຸກ'];
     filterBtns.forEach((btn, idx) => {
         if (filterTexts[idx]) btn.textContent = t(filterTexts[idx]);
     });
-    
-    // Products section title
+
     const productsTitle = document.querySelector('.products-section h2');
     if (productsTitle) productsTitle.textContent = t('ສິນຄ້າທັງໝົດ');
-    
-    // Cart modal header
+
     const cartModalHeader = document.querySelector('#cartModal .modal-header h2');
     if (cartModalHeader) cartModalHeader.innerHTML = `<i class="fas fa-shopping-cart"></i> ${t('ກະຕ່າສິນຄ້າ')}`;
-    
-    // User modal header
+
     const userModalHeader = document.querySelector('#userModal .modal-header h2');
     if (userModalHeader) userModalHeader.innerHTML = `<i class="fas fa-user"></i> ${t('ຂໍ້ມູນລູກຄ້າ')}`;
-    
-    // User modal inputs
+
     const nameInput = document.getElementById('customerName');
     if (nameInput) nameInput.placeholder = t('ຊື່ລູກຄ້າ *');
     
@@ -505,33 +469,19 @@ function translatePage() {
     
     const saveBtn = document.getElementById('saveCustomerBtn');
     if (saveBtn) saveBtn.innerHTML = t('ບັນທຶກຂໍ້ມູນ');
-    
-    // Product detail modal
+
     const detailTitle = document.getElementById('modalProductTitle');
     if (detailTitle) detailTitle.innerHTML = `<i class="fas fa-info-circle"></i> ${t('ລາຍລະອຽດສິນຄ້າ')}`;
 
-    // ຫຼັງຈາກປ່ຽນພາສາ ຈຶ່ງ render ສິນຄ້າໃໝ່ (ເອີ້ນສະເພາະເວລາປ່ຽນພາສາ ບໍ່ແມ່ນໂຫຼດໜ້າ)
     if (document.getElementById('productsGrid')?.children.length > 0) {
         displayProducts();
     }
 }
 
-// ========== Helper Functions ==========
-// ຟັງຊັ້ນຊ່ວຍຕ່າງໆ
-
-/**
- * ຟັງຊັ້ນຈັດຮູບແບບຕົວເລກເງິນ
- * @param {number} amount - ຈຳນວນເງິນ
- * @returns {string} ຕົວເລກທີ່ມີຮູບແບບແຍກຫຼັກພັນ
- */
 function formatMoney(amount) {
     return amount.toLocaleString('lo-LA');
 }
 
-/**
- * ຟັງຊັ້ນສະແດງຂໍ້ຄວາມແຈ້ງເຕືອນ (Toast)
- * @param {string} message - ຂໍ້ຄວາມທີ່ຈະສະແດງ
- */
 function showToast(message) {
     const toast = document.getElementById('toastMsg');
     toast.textContent = message;
@@ -539,54 +489,32 @@ function showToast(message) {
     setTimeout(() => { toast.style.opacity = '0'; }, 2500);
 }
 
-/**
- * ຄຳນວນຍອດລວມສິນຄ້າກ່ອນສ່ວນຫຼຸດ ແລະ ຄ່າຂົນສົ່ງ
- * @returns {number} ຍອດລວມສິນຄ້າ
- */
 function getSubtotal() {
     return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 }
 
-/**
- * ດຶງຄ່າຂົນສົ່ງຕາມຮູບແບບທີ່ເລືອກ
- * @returns {number} ຄ່າຂົນສົ່ງ
- */
 function getShippingCost() {
     return shippingCosts[selectedShipping] || 20000;
 }
 
-/**
- * ຄຳນວນຈຳນວນສ່ວນຫຼຸດ (ຖ້າມີ)
- * @returns {number} ຈຳນວນສ່ວນຫຼຸດ
- */
 function getDiscountAmount() {
     return discountApplied ? Math.floor(getSubtotal() * DISCOUNT_RATE) : 0;
 }
 
-/**
- * ຄຳນວນຍອດສຸດທ້າຍຫຼັງຫັກສ່ວນຫຼຸດ ແລະ ບວກຄ່າຂົນສົ່ງ
- * @returns {number} ຍອດສຸດທ້າຍ
- */
 function getGrandTotal() {
     return getSubtotal() + getShippingCost() - getDiscountAmount();
 }
 
-/**
- * ອັບເດດຕົວເລກສິນຄ້າໃນກະຕ່າ (Badge)
- */
 function updateCartBadge() {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const badge = document.getElementById('cartCountBadge');
     if (badge) badge.textContent = totalItems;
 }
 
-// ========== Safe placeholder URL (ປ້ອງກັນ XSS ຈາກ emoji ໃນ onerror) ==========
 function getPlaceholderSrc(emoji) {
     return 'https://placehold.co/400x300/667eea/white?text=' + encodeURIComponent(emoji);
 }
 
-// ========== Display Products ==========
-// ຟັງຊັ້ນສະແດງສິນຄ້າທັງໝົດ (ຮອງຮັບການປ່ຽນພາສາ)
 function displayProducts() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const activeCategory = document.querySelector('.filter-btn.active')?.dataset.category || 'all';
@@ -622,7 +550,6 @@ function displayProducts() {
         </div>
     `).join('');
 
-    // ຜູກ event ຜ່ານ event delegation ເພື່ອປະສິດທິພາບດີຂຶ້ນ
     grid.querySelectorAll('.btn-add').forEach(btn => {
         btn.addEventListener('click', () => addToCart(parseInt(btn.dataset.id)));
     });
@@ -632,8 +559,6 @@ function displayProducts() {
     });
 }
 
-// ========== Add to Cart ==========
-// ຟັງຊັ້ນເພີ່ມສິນຄ້າເຂົ້າກະຕ່າ
 function addToCart(id) {
     const product = products.find(p => p.id === id);
     if (!product) return;
@@ -644,7 +569,7 @@ function addToCart(id) {
     } else {
         cart.push({
             id: product.id,
-            name: product.name[currentLang],  // ໃຊ້ຊື່ຕາມພາສາທີ່ເລືອກ
+            name: product.name[currentLang], 
             price: product.price,
             emoji: product.emoji,
             quantity: 1
@@ -654,8 +579,6 @@ function addToCart(id) {
     showToast(`✅ ${product.emoji} ${product.name[currentLang]} ${t('ເພີ່ມໃສ່ກະຕ່າແລ້ວ')}`);
 }
 
-// ========== Show Product Detail Modal ==========
-// ຟັງຊັ້ນສະແດງລາຍລະອຽດສິນຄ້າ (ຮອງຮັບການປ່ຽນພາສາ)
 function showProductDetail(id) {
     const product = products.find(p => p.id === id);
     if (!product) return;
@@ -664,7 +587,6 @@ function showProductDetail(id) {
     const body = document.getElementById('productDetailBody');
     document.getElementById('modalProductTitle').innerHTML = `<i class="fas fa-info-circle"></i> ${t('ລາຍລະອຽດສິນຄ້າ')}`;
 
-    // ໃຊ້ລາຍລະອຽດຕາມພາສາທີ່ເລືອກ
     const detailText = product.detail[currentLang];
     const detailPoints = detailText.split('|').map(point => point.trim());
 
@@ -701,8 +623,6 @@ function showProductDetail(id) {
     });
 }
 
-// ========== Render Cart Modal ==========
-// ຟັງຊັ້ນສະແດງກະຕ່າ (ຮອງຮັບການປ່ຽນພາສາ)
 function renderCartModal() {
     const subtotal  = getSubtotal();
     const shipping  = getShippingCost();
@@ -802,7 +722,7 @@ function renderCartModal() {
                            value="${discountApplied ? COUPON_CODE : ''}">
                     <button id="applyCouponBtn" class="btn-coupon" ${discountApplied ? 'disabled' : ''}>
                         ${discountApplied ? `✅ ${t('ໃຊ້ແລ້ວ')}` : t('ໃຊ້ລະຫັດ')}
-                    </button>
+                    </button>         
                 </div>
                 <p id="couponMsg" style="margin-top:8px;font-size:0.8rem;${discountApplied ? 'color:green' : ''}">
                     ${discountApplied ? `✅ ${t('ໄດ້ຮັບສ່ວນຫຼຸດ 5% ແລ້ວ!')}` : ''}
@@ -827,7 +747,6 @@ function renderCartModal() {
 
     if (cart.length === 0) return;
 
-    // Quantity buttons
     modalBody.querySelectorAll('.qty-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const idx   = parseInt(btn.dataset.idx);
@@ -843,7 +762,6 @@ function renderCartModal() {
         });
     });
 
-    // Remove buttons
     modalBody.querySelectorAll('.btn-remove-modal').forEach(btn => {
         btn.addEventListener('click', () => {
             cart.splice(parseInt(btn.dataset.idx), 1);
@@ -852,7 +770,6 @@ function renderCartModal() {
         });
     });
 
-    // Shipping options
     modalBody.querySelectorAll('.shipping-option').forEach(opt => {
         opt.addEventListener('click', () => {
             selectedShipping = opt.dataset.ship;
@@ -860,7 +777,6 @@ function renderCartModal() {
         });
     });
 
-    // Payment options
     modalBody.querySelectorAll('.payment-option').forEach(opt => {
         opt.addEventListener('click', () => {
             selectedPayment = opt.dataset.pay;
@@ -868,7 +784,6 @@ function renderCartModal() {
         });
     });
 
-    // Coupon
     const applyBtn = document.getElementById('applyCouponBtn');
     if (applyBtn) {
         applyBtn.addEventListener('click', () => {
@@ -891,8 +806,6 @@ function renderCartModal() {
     if (checkoutBtn) checkoutBtn.addEventListener('click', checkout);
 }
 
-// ========== Checkout ==========
-// ຟັງຊັ້ນຢືນຢັນການຊຳລະ ແລະ ສ້າງໃບບິນ
 function checkout() {
     if (cart.length === 0) {
         showToast(`❌ ${t('ກະລຸນາເລືອກສິນຄ້າກ່ອນ')}`);
@@ -934,14 +847,12 @@ function checkout() {
         orderDate:      new Date().toLocaleString(currentLang === 'lo' ? 'lo-LA' : 'en-US')
     };
 
-    // ບັນທຶກຂໍ້ມູນຄຳສັ່ງ ແລະ ເປີດໃບບິນ
     localStorage.setItem('currentOrder', JSON.stringify(orderData));
     const receiptWindow = window.open('receipt.html', '_blank');
     if (!receiptWindow) {
         showToast('⚠️ ກະລຸນາອະນຸຍາດ popup ເພື່ອເປີດໃບບິນ');
     }
 
-    // Reset state
     cart = [];
     discountApplied = false;
     updateCartBadge();
@@ -949,13 +860,10 @@ function checkout() {
     showToast(`✅ ${t('ຊຳລະເງິນສຳເລັດ!')}`);
 }
 
-// ========== Language Switch Handler ==========
-// ສ່ວນນີ້ເພີ່ມໃໝ່: ການຈັດການປຸ່ມເລືອກພາສາ
 function initLanguageSwitch() {
     const langBtn = document.getElementById('langSwitchBtn');
     if (!langBtn) return;
-    
-    // ສ້າງ dropdown ເມນູສຳລັບເລືອກພາສາ
+
     const dropdown = document.createElement('div');
     dropdown.className = 'lang-dropdown';
     const menu = document.createElement('div');
@@ -968,14 +876,12 @@ function initLanguageSwitch() {
     langBtn.parentNode.insertBefore(dropdown, langBtn);
     dropdown.appendChild(langBtn);
     dropdown.appendChild(menu);
-    
-    // ເປີດ/ປິດ dropdown ເມື່ອກົດປຸ່ມພາສາ
+
     langBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         menu.classList.toggle('show');
     });
-    
-    // ເມື່ອເລືອກພາສາໃດນຶ່ງ
+
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -985,42 +891,34 @@ function initLanguageSwitch() {
                 return;
             }
             currentLang = newLang;
-            localStorage.setItem('preferredLanguage', currentLang);  // ບັນທຶກພາສາທີ່ເລືອກ
-            translatePage();  // ແປພາສາທັງໜ້າ
+            localStorage.setItem('preferredLanguage', currentLang);  
+            translatePage();  
             menu.classList.remove('show');
             showToast(currentLang === 'lo' ? '🇱🇦 ປ່ຽນເປັນພາສາລາວແລ້ວ' : '🇬🇧 Switched to English');
         });
     });
-    
-    // ປິດ dropdown ເມື່ອກົດນອກ
+
     document.addEventListener('click', () => {
         menu.classList.remove('show');
     });
 }
 
-// ========== Event Listeners ==========
-// ສ່ວນຜູກຟັງເຫດການຕ່າງໆ ເມື່ອໂຫຼດໜ້າເວັບສຳເລັດ
 document.addEventListener('DOMContentLoaded', () => {
-    // ດຶງພາສາທີ່ເຄີຍເລືອກໄວ້ຈາກ localStorage (ຖ້າມີ)
+   
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang === 'en' || savedLang === 'lo') {
         currentLang = savedLang;
     }
     
-    // ເລີ່ມຕົ້ນການປ່ຽນພາສາ
     initLanguageSwitch();
-    
-    // ແປພາສາໜ້າເວັບຕອນເລີ່ມຕົ້ນ
+
     translatePage();
-    
-    // ສະແດງສິນຄ້າ ແລະ ອັບເດດຕົວເລກກະຕ່າ
+
     displayProducts();
     updateCartBadge();
 
-    // Search event
     document.getElementById('searchInput').addEventListener('input', displayProducts);
 
-    // Category filter
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1029,18 +927,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Cart modal - ເປີດ
     document.getElementById('cartIconBtn').addEventListener('click', () => {
         renderCartModal();
         document.getElementById('cartModal').style.display = 'block';
     });
 
-    // Contact modal - ເປີດ
     document.getElementById('contactIconBtn').addEventListener('click', () => {
         document.getElementById('contactModal').style.display = 'block';
     });
 
-    // ລາຍງານບັນຫາ - ຈັດການຮູບພາບ preview
     let reportImages = [];
 
     document.getElementById('reportImageInput').addEventListener('change', function () {
@@ -1076,7 +971,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
 
-        // ຖ້າຄົບ 5 ຮູບ ຊ່ອນປຸ່ມອັບໂຫຼດ
         placeholder.style.display = reportImages.length >= 5 ? 'none' : 'block';
     }
 
@@ -1085,7 +979,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderImagePreviews();
     };
 
-    // ປຸ່ມຍືນຍັນລາຍງານ
     document.getElementById('reportSubmitBtn').addEventListener('click', () => {
         const text = document.getElementById('reportText').value.trim();
         if (!text) {
@@ -1094,7 +987,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // ສຳເລັດ — Reset ຟອມ
         document.getElementById('reportText').value = '';
         reportImages = [];
         renderImagePreviews();
@@ -1102,7 +994,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('✅ ລາຍງານບັນຫາສຳເລັດ! ພວກເຮົາຈະຕິດຕໍ່ກັບໄປໄວໆ 🙏');
     });
 
-    // User/customer modal - ເປີດ (pre-fill ຂໍ້ມູນເດີມ)
     document.getElementById('userIconBtn').addEventListener('click', () => {
         document.getElementById('customerName').value     = customerData.name;
         document.getElementById('customerPhone').value    = customerData.phone;
@@ -1113,7 +1004,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('userModal').style.display = 'block';
     });
 
-    // Save customer data
     document.getElementById('saveCustomerBtn').addEventListener('click', () => {
         const data = {
             name:     document.getElementById('customerName').value.trim(),
@@ -1134,7 +1024,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast(`✅ ${t('ບັນທຶກຂໍ້ມູນລູກຄ້າແລ້ວ')}`);
     });
 
-    // ປິດ modal: ທັງກົດປຸ່ມ × ແລະ ກົດຫຼັງ backdrop ໃນ handler ດຽວກັນ
     window.addEventListener('click', (e) => {
         if (e.target.classList.contains('modal') || e.target.classList.contains('close-modal')) {
             const modal = e.target.closest('.modal') || e.target;
